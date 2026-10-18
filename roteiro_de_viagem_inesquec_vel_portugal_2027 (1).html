@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Douglas & Gabriela | Portugal 2027</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cobalt: {
+                            50: '#f0f4f9',
+                            100: '#dbe5f2',
+                            200: '#bdcde4',
+                            600: '#1d4ed8',
+                            800: '#1e3a8a',
+                            900: '#0f2257',
+                            950: '#091338',
+                        },
+                        gold: {
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        terracotta: '#c85a32',
+                        cream: '#faf8f3',
+                        azulejoBg: '#f4f1ea'
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .azulejo-pattern {
+            background-color: #faf8f3;
+            background-image: radial-gradient(#1e3a8a 0.75px, transparent 0.75px), radial-gradient(#1e3a8a 0.75px, #faf8f3 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.95;
+        }
+
+        .tile-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(30, 58, 138, 0.15);
+            box-shadow: 0 10px 25px -5px rgba(15, 34, 87, 0.08), 0 8px 10px -6px rgba(15, 34, 87, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(15, 34, 87, 0.2);
+            border-color: rgba(217, 119, 6, 0.4);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #faf8f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b45309;
+        }
+    </style>
+</head>
+<body class="bg-azulejoBg font-sans text-gray-800 antialiased min-h-screen flex flex-col selection:bg-cobalt-800 selection:text-gold-300">
+
+    <header class="relative bg-cobalt-950 text-white overflow-hidden border-b-4 border-gold-500">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="azulejo" width="60" height="60" patternUnits="userSpaceOnUse">
+                        <path d="M30 0 L60 30 L30 60 L0 30 Z" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+                        <circle cx="30" cy="30" r="10" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+                        <path d="M0 0 L60 60 M60 0 L0 60" stroke="#ffffff" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#azulejo)"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 relative z-10">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-gold-400 bg-cobalt-900 shadow-xl mb-4 text-gold-400">
+                    <i class="fa-solid fa-compass-drafting text-2xl"></i>
+                </div>
+                
+                <p class="text-gold-400 uppercase tracking-widest text-xs font-semibold mb-2">Roteiro Exclusivo de Viagem • Portugal 2027</p>
+                <h1 id="header-couple-names" class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-3">
+                    Douglas & Gabriela
+                </h1>
+                <p class="text-cobalt-200 text-sm sm:text-base max-w-2xl mx-auto font-light">
+                    12 a 19 de Junho de 2027 • Base em Alfama, Lisboa
+                </p>
+
+                <div class="mt-8 inline-grid grid-cols-4 gap-2 sm:gap-4 bg-cobalt-900/80 backdrop-blur-md border border-gold-500/30 p-3 sm:p-5 rounded-2xl shadow-2xl">
+                    <div class="text-center px-2">
+                        <span id="cd-days" class="font-serif text-xl sm:text-3xl font-bold text-gold-400 block">00</span>
+                        <span class="text-[10px] sm:text-xs text-cobalt-200 uppercase tracking-wider">Dias</span>
+                    </div>
+                    <div class="text-center px-2 border-l border-cobalt-800">
+                        <span id="cd-hours" class="font-serif text-xl sm:text-3xl font-bold text-white block">00</span>
+                        <span class="text-[10px] sm:text-xs text-cobalt-200 uppercase tracking-wider">Horas</span>
+                    </div>
+                    <div class="text-center px-2 border-l border-cobalt-800">
+                        <span id="cd-mins" class="font-serif text-xl sm:text-3xl font-bold text-white block">00</span>
+                        <span class="text-[10px] sm:text-xs text-cobalt-200 uppercase tracking-wider">Mins</span>
+                    </div>
+                    <div class="text-center px-2 border-l border-cobalt-800">
+                        <span id="cd-secs" class="font-serif text-xl sm:text-3xl font-bold text-gold-400 block">00</span>
+                        <span class="text-[10px] sm:text-xs text-cobalt-200 uppercase tracking-wider">Segs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-cobalt-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-14">
+                <div class="flex space-x-2 sm:space-x-8 overflow-x-auto no-scrollbar py-2">
+                    <button id="nav-btn-itinerary" onclick="switchTab('itinerary')" class="nav-tab active-tab flex items-center px-3 py-1.5 rounded-lg font-medium text-xs sm:text-sm text-cobalt-900 bg-cobalt-50 transition-colors">
+                        <i class="fa-solid fa-calendar-days text-gold-600 mr-2"></i> Roteiro Diário
+                    </button>
+                    <button id="nav-btn-info" onclick="switchTab('info')" class="nav-tab flex items-center px-3 py-1.5 rounded-lg font-medium text-xs sm:text-sm text-gray-600 hover:bg-cobalt-50 transition-colors">
+                        <i class="fa-solid fa-plane-departure text-cobalt-600 mr-2"></i> Voos & Alojamento
+                    </button>
+                    <button id="nav-btn-transports" onclick="switchTab('transports')" class="nav-tab flex items-center px-3 py-1.5 rounded-lg font-medium text-xs sm:text-sm text-gray-600 hover:bg-cobalt-50 transition-colors">
+                        <i class="fa-solid fa-route text-terracotta mr-2"></i> Guia de Deslocamentos
+                    </button>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="openCustomizerModal()" class="text-xs bg-gold-500 hover:bg-gold-600 text-cobalt-950 font-bold px-3 py-1.5 rounded-lg shadow-sm transition flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1.5"></i> Customizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- TAB 1: ITINERARY -->
+        <section id="tab-itinerary" class="tab-content block">
+            <div class="mb-8 p-4 bg-amber-50 border-l-4 border-gold-500 rounded-r-xl shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between text-sm text-amber-900 gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-gold-500 text-cobalt-950 rounded-lg">
+                        <i class="fa-solid fa-house-chimney text-lg"></i>
+                    </div>
+                    <div>
+                        <strong class="font-semibold block text-base text-cobalt-950">Alojamento Principal em Lisboa:</strong>
+                        <span>Beco da Laje 13, Alfama (Coração Histórico de Lisboa)</span>
+                    </div>
+                </div>
+                <span class="inline-flex items-center text-xs font-semibold px-3 py-1 bg-gold-200 text-gold-900 rounded-full">
+                    <i class="fa-solid fa-circle-info mr-1.5"></i> Clique no card para ver detalhes
+                </span>
+            </div>
+
+            <!-- Days Grid -->
+            <div id="itinerary-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </section>
+
+        <!-- TAB 2: FLIGHTS & LODGING -->
+        <section id="tab-info" class="tab-content hidden space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Flight Info -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-cobalt-100 relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="p-3 bg-cobalt-800 text-gold-400 rounded-xl shadow-md">
+                            <i class="fa-solid fa-plane text-xl"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-cobalt-950">Detalhes dos Voos</h3>
+                            <p class="text-xs text-gray-500">São Paulo (GRU) ✈ Lisboa (LIS)</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-6 p-4 bg-cobalt-50/70 rounded-xl border border-cobalt-100">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-cobalt-800">Voo de Ida</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full">Confirmado</span>
+                        </div>
+                        <div class="flex items-center justify-between font-serif text-lg font-bold text-cobalt-950">
+                            <div>GRU <span class="block text-xs font-sans font-normal text-gray-500">12/06 • 17:40</span></div>
+                            <i class="fa-solid fa-arrow-right text-gold-600 text-sm"></i>
+                            <div class="text-right">LIS <span class="block text-xs font-sans font-normal text-gray-500">13/06 • 09:45 (+1d)</span></div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-cobalt-50/70 rounded-xl border border-cobalt-100">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-cobalt-800">Voo de Regresso</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full">Confirmado</span>
+                        </div>
+                        <div class="flex items-center justify-between font-serif text-lg font-bold text-cobalt-950">
+                            <div>LIS <span class="block text-xs font-sans font-normal text-gray-500">19/06 • 09:25</span></div>
+                            <i class="fa-solid fa-arrow-right text-gold-600 text-sm"></i>
+                            <div class="text-right">GRU <span class="block text-xs font-sans font-normal text-gray-500">19/06 • Brasil</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Airbnb Info -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-cobalt-100">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="p-3 bg-terracotta text-white rounded-xl shadow-md">
+                            <i class="fa-solid fa-house-user text-xl"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-cobalt-950">Hospedagem Principal</h3>
+                            <p class="text-xs text-gray-500">Bairro Histórico de Alfama</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
+                            <i class="fa-solid fa-location-dot text-terracotta mt-1"></i>
+                            <div>
+                                <strong class="text-xs text-gray-500 uppercase tracking-wider block">Endereço</strong>
+                                <span class="text-sm font-semibold text-gray-800">Beco da Laje 13, Alfama, Lisboa</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 bg-gray-50 rounded-xl">
+                                <span class="text-xs text-gray-500 block">Check-in</span>
+                                <span class="text-sm font-bold text-cobalt-900">12/06 • A partir de 15:00</span>
+                                <p class="text-[11px] text-gray-500">Mala pode ser deixada às 11:30</p>
+                            </div>
+                            <div class="p-3 bg-gray-50 rounded-xl">
+                                <span class="text-xs text-gray-500 block">Check-out</span>
+                                <span class="text-sm font-bold text-cobalt-900">19/06 • Até 06:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: TRANSPORTS GUIDE -->
+        <section id="tab-transports" class="tab-content hidden">
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-cobalt-100">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="p-3 bg-cobalt-900 text-gold-400 rounded-xl">
+                        <i class="fa-solid fa-route text-xl"></i>
+                    </span>
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-cobalt-950">Tempos de Deslocamento dos Passeios</h3>
+                        <p class="text-xs text-gray-500">Estimativas de saída a partir do Beco da Laje 13 (Alfama)</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="transports-summary-list"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="day-modal" class="fixed inset-0 bg-cobalt-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col border-2 border-gold-500/40">
+            <div class="relative h-48 sm:h-64 bg-cobalt-900 flex-shrink-0">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-cobalt-950 via-cobalt-950/40 to-transparent"></div>
+                
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                    <span id="modal-date-badge" class="inline-block px-3 py-1 bg-gold-500 text-cobalt-950 text-xs font-bold rounded-full mb-1"></span>
+                    <h2 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold leading-tight"></h2>
+                </div>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6">
+                <div class="p-4 bg-cobalt-50 border-l-4 border-cobalt-800 rounded-r-xl flex items-start gap-3">
+                    <i class="fa-solid fa-person-walking-luggage text-cobalt-800 text-xl mt-0.5"></i>
+                    <div>
+                        <strong class="text-xs uppercase font-bold text-cobalt-900 tracking-wider block">Ponto de Encontro & Deslocamento</strong>
+                        <p id="modal-transport" class="text-sm text-cobalt-950 font-medium"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-gray-700 uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-camera text-gold-600 mr-1.5"></i> Fotos do Local
+                    </h4>
+                    <div id="modal-gallery" class="grid grid-cols-3 gap-2"></div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-sm font-bold text-gray-700 uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-clock text-gold-600 mr-1.5"></i> Cronograma do Dia
+                    </h4>
+                    <ul id="modal-timeline" class="space-y-3 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-cobalt-100"></ul>
+                </div>
+
+                <div class="p-4 bg-rose-50 border border-rose-200 rounded-xl flex items-start gap-3">
+                    <i class="fa-solid fa-heart text-terracotta text-lg mt-0.5"></i>
+                    <div>
+                        <strong class="text-xs uppercase font-bold text-terracotta tracking-wider block">Dica Especial do Casal</strong>
+                        <p id="modal-tip" class="text-sm text-gray-700 italic"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center flex-shrink-0">
+                <span class="text-xs text-gray-500 font-medium">Beco da Laje 13 • Alfama</span>
+                <button onclick="closeModal()" class="px-5 py-2 bg-cobalt-900 text-white font-medium text-sm rounded-xl hover:bg-cobalt-800">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="customizer-modal" class="fixed inset-0 bg-cobalt-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white w-full max-w-lg rounded-2xl p-6 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-serif text-lg font-bold text-cobalt-950">Customizar Roteiro</h3>
+                <button onclick="closeCustomizerModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Nome do Casal</label>
+                <input type="text" id="input-couple-names" class="w-full text-sm border rounded-lg p-2.5 focus:ring-2 focus:ring-cobalt-800 outline-none" value="Douglas & Gabriela">
+            </div>
+            <div class="pt-2 flex justify-between gap-3">
+                <button onclick="resetData()" class="px-3 py-2 text-xs bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg">Restaurar Padrão</button>
+                <button onclick="saveCustomization()" class="px-4 py-2 text-xs bg-cobalt-900 hover:bg-cobalt-800 text-white font-bold rounded-lg">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-cobalt-950 text-cobalt-200 py-8 border-t-4 border-gold-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p id="footer-couple-names" class="font-serif text-gold-400 text-sm font-semibold">Douglas & Gabriela em Portugal • Junho 2027</p>
+            <p class="text-cobalt-400">Roteiro Interativo com Estética de Azulejos Tradicionais Portugueses</p>
+        </div>
+    </footer>
+
+    <script>
+        const defaultItinerary = [
+            {
+                id: 1,
+                date: "12.06",
+                weekday: "Sábado",
+                title: "Chegada, Descanso & Véspera de Santo António",
+                // Imagem confiável de Alfama / Santo António
+                mainImage: "https://images.unsplash.com/photo-1548707309-dcebeab9ec98?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1548707309-dcebeab9ec98?auto=format&fit=crop&w=600&q=80", 
+                    "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=600&q=80", 
+                    "https://images.unsplash.com/photo-1585208703176-09db84f1452a?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Santo António", "Pouso LIS", "Canto da Vila", "Alfama"],
+                transport: "Aeroporto LIS ➔ Beco da Laje 13 (Alfama): ~25 min de Táxi/Uber.",
+                schedule: [
+                    { time: "09:45", text: "Pouso no Aeroporto de Lisboa (LIS). Imigração e deslocação de táxi/Uber para Alfama (~25 min)." },
+                    { time: "11:30", text: "Deixar as malas no Beco da Laje 13. Almoço leve e descontraído no Canto da Vila." },
+                    { time: "16:00 às 18:30", text: "Caminhada leve pelas vielas de Alfama, Miradouro de Santa Luzia, pôr do sol e Castelo de São Jorge." },
+                    { time: "19:00", text: "Início da Véspera de Santo António: grande festa nas ruas de Alfama, jantar e música ao vivo." }
+                ],
+                tip: "Usem calçados confortáveis para encarar a calçada portuguesa e as ladeiras de Alfama!"
+            },
+            {
+                id: 2,
+                date: "13.06",
+                weekday: "Domingo",
+                title: "Estádio do Benfica & Dia de Santo António",
+                mainImage: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Estádio da Luz", "Metro Direto", "Festa Oficial", "Bailaricos"],
+                transport: "Alfama ➔ Estádio da Luz: Metro Linha Azul de Santa Apolónia até Colégio Militar/Luz (~25 min).",
+                schedule: [
+                    { time: "10:00", text: "Tour guiado no Estádio do Benfica + Visita ao Museu Cosme Damião (Estádio da Luz)." },
+                    { time: "12:30", text: "Almoço perto do Estádio (Centro Comercial Colombo) ou regresso ao centro." },
+                    { time: "15:00", text: "Regresso a Alfama/Baixa para as festividades oficiais de Santo António (procissão, bailaricos e sardinha assada)." },
+                    { time: "20:00", text: "Jantar romântico em Alfama ou no bairro da Graça." }
+                ],
+                tip: "Experimente a tradicional sardinha assada no pão com sangria fresca!"
+            },
+            {
+                id: 3,
+                date: "14.06",
+                weekday: "Segunda-feira",
+                title: "Excursão: Óbidos, Fátima, Nazaré & Batalha",
+                mainImage: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1508672019048-805479767513?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Ponto: Hard Rock", "Óbidos", "Nazaré", "Fátima"],
+                transport: "Beco da Laje 13 ➔ Hard Rock Cafe: ~20 min a pé ou 8 min de Uber até Av. da Liberdade.",
+                schedule: [
+                    { time: "08:00", text: "Caminhada até ao Ponto de Encontro: Hard Rock Cafe (Avenida da Liberdade)." },
+                    { time: "09:00", text: "Início do tour Civitatis: Vila medieval de Óbidos, Basílica de Fátima, ondas da Nazaré e Mosteiro da Batalha." },
+                    { time: "18:30", text: "Retorno previsto a Lisboa no mesmo ponto." },
+                    { time: "20:00", text: "Jantar tranquilo na zona de Alfama." }
+                ],
+                tip: "Em Óbidos, não deixem de provar a famosa Ginjinha servida no copinho de chocolate!"
+            },
+            {
+                id: 4,
+                date: "15.06",
+                weekday: "Terça-feira",
+                title: "Bate-volta a Aveiro (A Veneza Portuguesa)",
+                mainImage: "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Gare do Oriente", "Moliceiros", "Ovos Moles", "Costa Nova"],
+                transport: "Alfama ➔ Gare do Oriente: Metro de Santa Apolónia (~12 min) para embarque no comboio (~2h).",
+                schedule: [
+                    { time: "08:30", text: "Metro até à Gare do Oriente e embarque no comboio para Aveiro." },
+                    { time: "Dia Inteiro", text: "Passeio nos barcos Moliceiros, prova dos Ovos Moles e visita à Costa Nova (casas coloridas às riscas)." },
+                    { time: "Fim de Tarde", text: "Regresso a Lisboa de comboio e jantar descontraído." }
+                ],
+                tip: "As casas listradas da Costa Nova rendem fotos incríveis para guardar de recordação!"
+            },
+            {
+                id: 5,
+                date: "16.06",
+                weekday: "Quarta-feira",
+                title: "Sintra, Cabo da Roca & Cascais",
+                mainImage: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Estação Rossio", "Palácio da Pena", "Cabo da Roca", "Cascais"],
+                transport: "Alfama ➔ Estação do Rossio: 15 min a pé ou 5 min de Uber.",
+                schedule: [
+                    { time: "08:30", text: "Caminhada até à Estação do Rossio. Comboio para Sintra (~40 min)." },
+                    { time: "09:30", text: "Chegada a Sintra e autocarro para o Palácio da Pena e centro histórico." },
+                    { time: "13:00", text: "Almoço na charmosa vila de Sintra." },
+                    { time: "14:30", text: "Autocarro para o Cabo da Roca (ponto mais ocidental da Europa)." },
+                    { time: "16:30", text: "Autocarro para Cascais, passeio à beira-mar e regresso de comboio para o Cais do Sodré." }
+                ],
+                tip: "Comprem os ingressos para o Palácio da Pena antecipadamente online para evitar filas!"
+            },
+            {
+                id: 6,
+                date: "17.06",
+                weekday: "Quinta-feira",
+                title: "Rota Histórica de Belém & LX Factory",
+                mainImage: "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Elétrico / Uber", "Pastéis de Belém", "Torre de Belém", "LX Factory"],
+                transport: "Alfama ➔ Belém: Elétrico 15E no Cais do Sodré ou ~20 min de Uber direto.",
+                schedule: [
+                    { time: "12:00", text: "Degustação dos autênticos e quentinhos Pastéis de Belém." },
+                    { time: "14:30", text: "Visita cultural ao Mosteiro dos Jerónimos e Padrão dos Descobrimentos." },
+                    { time: "16:00", text: "Sessão de fotos no exterior da icónica Torre de Belém." },
+                    { time: "17:00", text: "Exploração cultural e jantar descontraído no espaço hipster LX Factory." }
+                ],
+                tip: "Peça os pastéis com canela em pó e açúcar por cima, acompanhados de um bom café!"
+            },
+            {
+                id: 7,
+                date: "18.06",
+                weekday: "Sexta-feira",
+                title: "Dia Livre, Compras & Despedida de Lisboa",
+                mainImage: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Manhã Calma", "Baixa / Chiado", "Pôr do Sol", "Última Noite"],
+                transport: "Passeio a pé por Alfama, Baixa e Chiado a partir do Beco da Laje 13.",
+                schedule: [
+                    { time: "09:30", text: "Manhã calma pelas vielas de Alfama com café e pastéis." },
+                    { time: "13:00", text: "Almoço livre." },
+                    { time: "14:30", text: "Últimas compras na Baixa/Chiado e brinde no Miradouro de São Pedro de Alcântara." },
+                    { time: "Noite", text: "Mala, descanso e última noite romântica." }
+                ],
+                tip: "Aproveitem o pôr do sol no miradouro para fazer uma foto romântica inesquecível!"
+            },
+            {
+                id: 8,
+                date: "19.06",
+                weekday: "Sábado",
+                title: "Despedida de Portugal & Regresso ao Brasil",
+                mainImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80"
+                ],
+                pills: ["Check-out", "Uber Aeroporto", "Voo LIS ➔ GRU"],
+                transport: "Alfama ➔ Aeroporto (LIS): ~25 min de Táxi/Uber.",
+                schedule: [
+                    { time: "06:30", text: "Check-out no Beco da Laje 13 e transporte para o Aeroporto LIS." },
+                    { time: "09:25", text: "Embarque no voo de regresso a São Paulo (GRU)." }
+                ],
+                tip: "Guardem as recordações dessa viagem inesquecível no coração!"
+            }
+        ];
+
+        let itineraryData = [...defaultItinerary];
+
+        const fallbackImg = "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800&q=80";
+
+        function renderItinerary() {
+            const container = document.getElementById('itinerary-grid');
+            if(!container) return;
+            container.innerHTML = '';
+
+            itineraryData.forEach(day => {
+                const card = document.createElement('div');
+                card.className = "tile-card rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between";
+                card.onclick = () => openModal(day.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-44 overflow-hidden bg-cobalt-900">
+                            <img src="${day.mainImage}" alt="${day.title}" 
+                                 onerror="this.onerror=null; this.src='${fallbackImg}';" 
+                                 class="w-full h-full object-cover transition transform hover:scale-105 duration-500">
+                            <div class="absolute top-3 left-3 bg-cobalt-950/80 backdrop-blur-md text-gold-400 font-bold px-2.5 py-1 rounded-lg text-xs border border-gold-500/30">
+                                ${day.date} • ${day.weekday}
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-serif font-bold text-cobalt-950 text-base mb-2 line-clamp-2">${day.title}</h3>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                ${day.pills.map(p => `<span class="bg-cobalt-50 text-cobalt-800 text-[11px] font-semibold px-2 py-0.5 rounded-md border border-cobalt-100">${p}</span>`).join('')}
+                            </div>
+                            <p class="text-xs text-gray-600 line-clamp-2"><i class="fa-solid fa-location-arrow text-terracotta mr-1"></i>${day.transport}</p>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4 pt-2 border-t border-gray-100 flex justify-between items-center text-xs font-semibold text-cobalt-900">
+                        <span>Ver Detalhes</span>
+                        <i class="fa-solid fa-circle-chevron-right text-gold-600"></i>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            renderTransportSummary();
+        }
+
+        function renderTransportSummary() {
+            const list = document.getElementById('transports-summary-list');
+            if(!list) return;
+            list.innerHTML = '';
+
+            itineraryData.forEach(day => {
+                const item = document.createElement('div');
+                item.className = "p-3 bg-cobalt-50/70 border border-cobalt-100 rounded-xl flex items-start space-x-3";
+                item.innerHTML = `
+                    <div class="p-2 bg-cobalt-900 text-gold-400 font-bold rounded-lg text-xs whitespace-nowrap">
+                        ${day.date}
+                    </div>
+                    <div>
+                        <strong class="text-xs text-cobalt-950 font-bold block">${day.title}</strong>
+                        <p class="text-xs text-gray-600 mt-0.5">${day.transport}</p>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function openModal(id) {
+            const day = itineraryData.find(d => d.id === id);
+            if (!day) return;
+
+            const modalImg = document.getElementById('modal-img');
+            modalImg.onerror = function() {
+                this.src = 'https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=800&q=80';
+            };
+            modalImg.src = day.mainImage;
+
+            document.getElementById('modal-date-badge').innerText = `${day.date} • ${day.weekday}`;
+            document.getElementById('modal-title').innerText = day.title;
+            document.getElementById('modal-transport').innerText = day.transport;
+            document.getElementById('modal-tip').innerText = day.tip;
+
+            const gallery = document.getElementById('modal-gallery');
+            gallery.innerHTML = day.images.map(img => `
+                <div class="h-20 rounded-lg overflow-hidden shadow-sm bg-gray-200">
+                    <img src="${img}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=600&q=80'">
+                </div>
+            `).join('');
+
+            const timeline = document.getElementById('modal-timeline');
+            timeline.innerHTML = day.schedule.map(s => `
+                <li class="relative pl-7 text-xs">
+                    <span class="absolute left-2 top-1.5 w-2.5 h-2.5 bg-gold-500 rounded-full border-2 border-white"></span>
+                    <strong class="font-bold text-cobalt-950 mr-1">${s.time}:</strong>
+                    <span class="text-gray-700">${s.text}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('day-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('day-modal').classList.add('hidden');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active-tab', 'bg-cobalt-50', 'text-cobalt-900'));
+            
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            const btn = document.getElementById(`nav-btn-${tabName}`);
+            if(btn) btn.classList.add('active-tab', 'bg-cobalt-50', 'text-cobalt-900');
+        }
+
+        function openCustomizerModal() {
+            document.getElementById('customizer-modal').classList.remove('hidden');
+        }
+
+        function closeCustomizerModal() {
+            document.getElementById('customizer-modal').classList.add('hidden');
+        }
+
+        function saveCustomization() {
+            const names = document.getElementById('input-couple-names').value;
+            if(names) {
+                document.getElementById('header-couple-names').innerText = names;
+                document.getElementById('footer-couple-names').innerText = `${names} em Portugal • Junho 2027`;
+            }
+            closeCustomizerModal();
+        }
+
+        function resetData() {
+            document.getElementById('input-couple-names').value = "Douglas & Gabriela";
+            saveCustomization();
+        }
+
+        function startCountdown() {
+            const targetDate = new Date('2027-06-12T09:45:00').getTime();
+
+            function update() {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+
+                if (diff <= 0) {
+                    document.getElementById('cd-days').innerText = "00";
+                    document.getElementById('cd-hours').innerText = "00";
+                    document.getElementById('cd-mins').innerText = "00";
+                    document.getElementById('cd-secs').innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
+            }
+
+            update();
+            setInterval(update, 1000);
+        }
+
+        window.onload = function() {
+            renderItinerary();
+            startCountdown();
+        };
+    </script>
+</body>
+</html>
